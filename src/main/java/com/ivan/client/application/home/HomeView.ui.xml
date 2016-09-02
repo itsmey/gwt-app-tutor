@@ -4,6 +4,8 @@
     <g:HTMLPanel>
         
         <p>Hello world!</p>
-        
+        <g:TextBox ui:field="myTextBox"/><br/>
+        <g:Button ui:field="myButton"/>
+
     </g:HTMLPanel>
 </ui:UiBinder>
