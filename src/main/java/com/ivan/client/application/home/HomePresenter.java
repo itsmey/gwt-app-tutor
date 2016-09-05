@@ -1,6 +1,15 @@
 package com.ivan.client.application.home;
 
+import com.filenet.api.core.Connection;
+import com.filenet.api.core.Domain;
+import com.filenet.api.core.Factory;
+import com.filenet.api.core.ObjectStore;
+import com.filenet.api.exception.ExceptionCode;
+import com.filenet.api.exception.EngineRuntimeException;
+import com.filenet.api.util.UserContext;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.ivan.client.application.ApplicationPresenter;
 import com.ivan.client.place.NameTokens;
@@ -34,6 +43,16 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
 
     @Override
     public void myOnClick(String name) {
-        Window.alert(name);
+        HomeServiceAsync homeServiceAsync = GWT.create(HomeService.class);
+        AsyncCallback<Void> asyncCallback = new AsyncCallback<Void>() {
+            public void onFailure(Throwable caught) {
+                Window.alert("FAIL, code " + caught.getMessage());
+            }
+
+            public void onSuccess(Void result) {
+                Window.alert("SUCCESS");
+            }
+        };
+        homeServiceAsync.connectFileNet(name, asyncCallback);
     }
 }
