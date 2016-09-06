@@ -24,6 +24,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy>
                            implements HomeUiHandlers {
     interface MyView extends View, HasUiHandlers<HomeUiHandlers> {
+        void setLabelText(String text);
     }
 
     @ProxyStandard
@@ -46,13 +47,16 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
         HomeServiceAsync homeServiceAsync = GWT.create(HomeService.class);
         AsyncCallback<Void> asyncCallback = new AsyncCallback<Void>() {
             public void onFailure(Throwable caught) {
+                getView().setLabelText("press the button to connect");
                 Window.alert("FAIL, code " + caught.getMessage());
             }
 
             public void onSuccess(Void result) {
+                getView().setLabelText("press the button to connect");
                 Window.alert("SUCCESS");
             }
         };
+        getView().setLabelText("Connecting...");
         homeServiceAsync.connectFileNet(name, asyncCallback);
     }
 }

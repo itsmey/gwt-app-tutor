@@ -4,6 +4,7 @@
     <g:HTMLPanel>
         
         <p>Hello world!</p>
+        <g:Label ui:field="myLabel">press the button to connect</g:Label>
         <g:TextBox ui:field="myTextBox"/><br/>
         <g:Button ui:field="myButton">Connect</g:Button>
 

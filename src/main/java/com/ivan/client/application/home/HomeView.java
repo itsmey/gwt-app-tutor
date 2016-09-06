@@ -6,6 +6,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
@@ -22,6 +23,9 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     @UiField
     Button myButton;
 
+    @UiField
+    Label myLabel;
+
     @Inject
     HomeView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
@@ -30,5 +34,9 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     @UiHandler("myButton")
     public void myOnClick(ClickEvent event) {
         getUiHandlers().myOnClick(myTextBox.getText());
+    }
+
+    public void setLabelText(String text) {
+        myLabel.setText(text);
     }
 }
