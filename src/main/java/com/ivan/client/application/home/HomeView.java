@@ -17,26 +17,9 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     interface Binder extends UiBinder<Widget, HomeView> {
     }
 
-    @UiField
-    TextBox myTextBox;
-
-    @UiField
-    Button myButton;
-
-    @UiField
-    Label myLabel;
-
     @Inject
     HomeView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
     }
 
-    @UiHandler("myButton")
-    public void myOnClick(ClickEvent event) {
-        getUiHandlers().myOnClick(myTextBox.getText());
-    }
-
-    public void setLabelText(String text) {
-        myLabel.setText(text);
-    }
 }

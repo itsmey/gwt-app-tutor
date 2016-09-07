@@ -37,6 +37,9 @@ public class LoginView extends ViewWithUiHandlers<LoginUiHandlers> implements Lo
     Label loginLabel;
 
     @UiField
+    Label headerLabel;
+
+    @UiField
     Label passwordLabel;
 
     @UiField

@@ -6,11 +6,15 @@
             margin: auto;
             margin-top: 150px;
         }
+        .header {
+            font-size: 250%
+        }
     </ui:style>
 
     <g:VerticalPanel styleName='{style.center}'
                      verticalAlignment='ALIGN_MIDDLE'
                      horizontalAlignment='ALIGN_CENTER'>
+        <g:Label styleName='{style.header}' ui:field="headerLabel">GWT Test App</g:Label>
         <g:Label ui:field="loginLabel">login</g:Label>
         <g:TextBox ui:field="loginTextBox"/>
         <g:Label ui:field="passwordLabel">password</g:Label>

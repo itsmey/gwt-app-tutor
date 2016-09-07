@@ -24,7 +24,6 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy>
                            implements HomeUiHandlers {
     interface MyView extends View, HasUiHandlers<HomeUiHandlers> {
-        void setLabelText(String text);
     }
 
     @ProxyStandard
@@ -39,11 +38,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
             MyProxy proxy) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
-        getView().setUiHandlers(this);
+        //getView().setUiHandlers(this);
     }
 
-    @Override
-    public void myOnClick(String name) {
-
-    }
 }
