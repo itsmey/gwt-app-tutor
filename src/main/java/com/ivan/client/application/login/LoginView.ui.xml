@@ -3,7 +3,13 @@
 
     <g:HTMLPanel>
 
-        <p>Hello world!</p>
+        <g:Label ui:field="loginLabel">login</g:Label>
+        <g:TextBox ui:field="loginTextBox"/><br/>
+        <g:Label ui:field="passwordLabel">password</g:Label>
+        <g:PasswordTextBox ui:field="passwordTextBox"/><br/>
+        <g:Button ui:field="connectButton">Connect</g:Button>
+        <g:Button ui:field="showInfoButton">Show Info Page</g:Button>
+        <g:Label ui:field="connectionStatusLabel">connection not established</g:Label>
 
     </g:HTMLPanel>
 </ui:UiBinder>

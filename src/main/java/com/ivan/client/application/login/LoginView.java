@@ -10,12 +10,34 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 public class LoginView extends ViewWithUiHandlers<LoginUiHandlers> implements LoginPresenter.MyView {
     interface Binder extends UiBinder<Widget, LoginView> {
     }
+
+    @UiField
+    TextBox loginTextBox;
+
+    @UiField
+    PasswordTextBox passwordTextBox;
+
+    @UiField
+    Button connectButton;
+
+    @UiField
+    Button showInfoButton;
+
+    @UiField
+    Label loginLabel;
+
+    @UiField
+    Label passwordLabel;
+
+    @UiField
+    Label connectionStatusLabel;
 
     @Inject
     LoginView(Binder uiBinder) {
