@@ -1,15 +1,26 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
-    <g:HTMLPanel>
+    <ui:style>
+        .center {
+            margin: auto;
+            margin-top: 150px;
+        }
+    </ui:style>
 
+    <g:VerticalPanel styleName='{style.center}'
+                     verticalAlignment='ALIGN_MIDDLE'
+                     horizontalAlignment='ALIGN_CENTER'>
         <g:Label ui:field="loginLabel">login</g:Label>
-        <g:TextBox ui:field="loginTextBox"/><br/>
+        <g:TextBox ui:field="loginTextBox"/>
         <g:Label ui:field="passwordLabel">password</g:Label>
-        <g:PasswordTextBox ui:field="passwordTextBox"/><br/>
-        <g:Button ui:field="connectButton">Connect</g:Button>
-        <g:Button ui:field="showInfoButton">Show Info Page</g:Button>
+        <g:PasswordTextBox ui:field="passwordTextBox"/>
+        <g:HorizontalPanel>
+            <g:Button ui:field="connectButton">Connect</g:Button>
+            <g:Button ui:field="showInfoButton">Show Info Page</g:Button>
+            <g:Button ui:field="showDocumentsButton">Work with documents</g:Button>
+        </g:HorizontalPanel>
         <g:Label ui:field="connectionStatusLabel">connection not established</g:Label>
+    </g:VerticalPanel>
 
-    </g:HTMLPanel>
 </ui:UiBinder>

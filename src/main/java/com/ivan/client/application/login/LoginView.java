@@ -31,6 +31,9 @@ public class LoginView extends ViewWithUiHandlers<LoginUiHandlers> implements Lo
     Button showInfoButton;
 
     @UiField
+    Button showDocumentsButton;
+
+    @UiField
     Label loginLabel;
 
     @UiField
