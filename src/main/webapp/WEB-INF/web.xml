@@ -9,11 +9,11 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>homeServiceImpl</servlet-name>
-        <servlet-class>com.ivan.server.HomeServiceImpl</servlet-class>
+        <servlet-name>loginServiceImpl</servlet-name>
+        <servlet-class>com.ivan.server.LoginServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>homeServiceImpl</servlet-name>
-        <url-pattern>/TestGwtp/home</url-pattern>
+        <servlet-name>loginServiceImpl</servlet-name>
+        <url-pattern>/TestGwtp/login</url-pattern>
     </servlet-mapping>
 </web-app>

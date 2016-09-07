@@ -22,6 +22,7 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresenter.MyProxy>
         implements LoginUiHandlers {
     interface MyView extends View, HasUiHandlers<LoginUiHandlers> {
+        void setConnectionStatus(String text);
     }
 
     private static class InfoPopup extends PopupPanel {
@@ -50,7 +51,19 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
     }
 
     @Override
-    public void connectButtonClick(String name, String pwd) {
+    public void connectButtonClick(String name, String password) {
+        LoginServiceAsync loginServiceAsync = GWT.create(LoginService.class);
+        AsyncCallback<Void> asyncCallback = new AsyncCallback<Void>() {
+            public void onFailure(Throwable caught) {
+                getView().setConnectionStatus("Connection failure.");
+            }
+
+            public void onSuccess(Void result) {
+                getView().setConnectionStatus("Connection established.");
+            }
+        };
+        getView().setConnectionStatus("Connecting...");
+        loginServiceAsync.connectFileNet(name, password, asyncCallback);
     }
 
     @Override

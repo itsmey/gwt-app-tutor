@@ -61,4 +61,8 @@ public class LoginView extends ViewWithUiHandlers<LoginUiHandlers> implements Lo
     public void showDocumentsButtonClick(ClickEvent event) {
         getUiHandlers().showDocumentsButtonClick();
     }
+
+    public void setConnectionStatus(String text) {
+        connectionStatusLabel.setText(text);
+    }
 }
