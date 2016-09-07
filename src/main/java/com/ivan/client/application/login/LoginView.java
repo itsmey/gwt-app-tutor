@@ -47,4 +47,18 @@ public class LoginView extends ViewWithUiHandlers<LoginUiHandlers> implements Lo
         initWidget(uiBinder.createAndBindUi(this));
     }
 
+    @UiHandler("connectButton")
+    public void connectButtonClick(ClickEvent event) {
+        getUiHandlers().connectButtonClick(loginTextBox.getText(), passwordTextBox.getText());
+    }
+
+    @UiHandler("showInfoButton")
+    public void showInfoButtonClick(ClickEvent event) {
+        getUiHandlers().showInfoButtonClick();
+    }
+
+    @UiHandler("showDocumentsButton")
+    public void showDocumentsButtonClick(ClickEvent event) {
+        getUiHandlers().showDocumentsButtonClick();
+    }
 }

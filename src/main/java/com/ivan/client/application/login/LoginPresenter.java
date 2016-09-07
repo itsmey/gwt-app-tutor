@@ -31,7 +31,18 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
             MyProxy proxy) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
-        //getView().setUiHandlers(this);
+        getView().setUiHandlers(this);
     }
 
+    @Override
+    public void connectButtonClick(String name, String pwd) {
+    }
+
+    @Override
+    public void showInfoButtonClick() {
+    }
+
+    @Override
+    public void showDocumentsButtonClick() {
+    }
 }
