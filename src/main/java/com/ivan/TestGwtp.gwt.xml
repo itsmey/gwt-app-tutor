@@ -5,6 +5,8 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name="com.gwtplatform.mvp.MvpWithEntryPoint"/>
 
+    <inherits name="com.google.gwt.user.theme.dark.Dark"/>
+
     <extend-configuration-property name="gin.ginjector.modules"
                                    value="com.ivan.client.gin.ClientModule"/>
 
