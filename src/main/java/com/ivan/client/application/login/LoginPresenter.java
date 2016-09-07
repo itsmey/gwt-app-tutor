@@ -8,6 +8,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.gwtplatform.mvp.client.HasUiHandlers;
+import com.gwtplatform.mvp.client.proxy.PlaceManager;
+import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.ivan.client.application.ApplicationPresenter;
 import com.ivan.client.place.NameTokens;
 import com.google.inject.Inject;
@@ -40,12 +42,17 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
     interface MyProxy extends ProxyPlace<LoginPresenter> {
     }
 
+    private final PlaceManager placeManager;
+
     @Inject
     LoginPresenter(
             EventBus eventBus,
             MyView view,
-            MyProxy proxy) {
+            MyProxy proxy,
+            PlaceManager placeManager) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
+
+        this.placeManager = placeManager;
 
         getView().setUiHandlers(this);
     }
@@ -81,5 +88,9 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
 
     @Override
     public void showDocumentsButtonClick() {
+        PlaceRequest placeRequest = new PlaceRequest.Builder()
+                .nameToken(NameTokens.HOME)
+                .build();
+        placeManager.revealPlace(placeRequest);
     }
 }
