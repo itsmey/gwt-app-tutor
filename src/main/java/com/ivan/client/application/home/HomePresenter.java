@@ -23,6 +23,8 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
+import java.util.List;
+
 public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy>
                            implements HomeUiHandlers {
     interface MyView extends View, HasUiHandlers<HomeUiHandlers> {
@@ -45,7 +47,19 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
 
     @Override
     public void doButtonClick(int code, String parameter) {
+        HomeServiceAsync homeServiceAsync = GWT.create(HomeService.class);
+        AsyncCallback<List<String>> asyncCallback = new AsyncCallback<List<String>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("FAILURE");
+            }
 
+            @Override
+            public void onSuccess(List<String> result) {
+                Window.alert(result.get(0));
+            }
+        };
+        homeServiceAsync.doTask(code, parameter, asyncCallback);
     }
 
 }

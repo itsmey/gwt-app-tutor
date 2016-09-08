@@ -12,8 +12,16 @@
         <servlet-name>loginServiceImpl</servlet-name>
         <servlet-class>com.ivan.server.LoginServiceImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>homeServiceImpl</servlet-name>
+        <servlet-class>com.ivan.server.HomeServiceImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginServiceImpl</servlet-name>
         <url-pattern>/TestGwtp/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>homeServiceImpl</servlet-name>
+        <url-pattern>/TestGwtp/home</url-pattern>
     </servlet-mapping>
 </web-app>
