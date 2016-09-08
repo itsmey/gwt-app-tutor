@@ -8,6 +8,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.gwtplatform.mvp.client.HasUiHandlers;
+import com.gwtplatform.mvp.client.annotations.NoGatekeeper;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.ivan.client.application.ApplicationPresenter;
@@ -39,10 +40,13 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
 
     @ProxyStandard
     @NameToken(NameTokens.LOGIN)
+    @NoGatekeeper
     interface MyProxy extends ProxyPlace<LoginPresenter> {
     }
 
     private final PlaceManager placeManager;
+
+    private static boolean isLoggedIn = false;
 
     @Inject
     LoginPresenter(
@@ -62,10 +66,12 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
         LoginServiceAsync loginServiceAsync = GWT.create(LoginService.class);
         AsyncCallback<Void> asyncCallback = new AsyncCallback<Void>() {
             public void onFailure(Throwable caught) {
+                setIsLoggedIn(false);
                 getView().setConnectionStatus("Connection failure.");
             }
 
             public void onSuccess(Void result) {
+                setIsLoggedIn(true);
                 getView().setConnectionStatus("Connection established.");
             }
         };
@@ -92,5 +98,13 @@ public class LoginPresenter extends Presenter<LoginPresenter.MyView, LoginPresen
                 .nameToken(NameTokens.HOME)
                 .build();
         placeManager.revealPlace(placeRequest);
+    }
+
+    public static boolean getIsLoggedIn() {
+        return isLoggedIn;
+    }
+
+    public static void setIsLoggedIn(boolean value) {
+        isLoggedIn = value;
     }
 }
