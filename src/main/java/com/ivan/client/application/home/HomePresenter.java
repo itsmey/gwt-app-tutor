@@ -12,6 +12,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.ivan.client.application.ApplicationPresenter;
+import com.ivan.client.application.login.LoginService;
+import com.ivan.client.application.login.LoginServiceAsync;
 import com.ivan.client.place.NameTokens;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
@@ -38,7 +40,12 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
             MyProxy proxy) {
         super(eventBus, view, proxy, ApplicationPresenter.SLOT_MAIN);
 
-        //getView().setUiHandlers(this);
+        getView().setUiHandlers(this);
+    }
+
+    @Override
+    public void doButtonClick(int code, String parameter) {
+
     }
 
 }
