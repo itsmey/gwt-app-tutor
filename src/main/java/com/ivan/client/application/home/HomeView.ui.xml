@@ -15,13 +15,15 @@
                      verticalAlignment='ALIGN_MIDDLE'
                      horizontalAlignment='ALIGN_CENTER'>
         <g:Label styleName='{style.header}' ui:field="headerLabel">Demo data manipulation</g:Label>
-        <g:RadioButton ui:field="crfRadio" name="radio">Create folder</g:RadioButton>
-        <g:RadioButton ui:field="crdRadio" name="radio">Create document</g:RadioButton>
-        <g:RadioButton ui:field="dlfRadio" name="radio">Delete folder</g:RadioButton>
-        <g:RadioButton ui:field="dldRadio" name="radio">Delete document</g:RadioButton>
-        <g:RadioButton ui:field="vwfRadio" name="radio">View folder contents</g:RadioButton>
+        <g:VerticalPanel>
+            <g:RadioButton ui:field="crfRadio" name="radio">Create folder</g:RadioButton>
+            <g:RadioButton ui:field="crdRadio" name="radio">Create document</g:RadioButton>
+            <g:RadioButton ui:field="dlfRadio" name="radio">Delete folder</g:RadioButton>
+            <g:RadioButton ui:field="dldRadio" name="radio">Delete document</g:RadioButton>
+            <g:RadioButton ui:field="vwfRadio" name="radio">View folder contents</g:RadioButton>
+        </g:VerticalPanel>
         <g:HorizontalPanel>
-            <g:Label ui:field="nameLabel">Title</g:Label>
+            <g:Label ui:field="parameterLabel">Parameter</g:Label>
             <g:TextBox ui:field="nameTextBox"/>
         </g:HorizontalPanel>
         <g:Button ui:field="doButton">Do selected action</g:Button>
