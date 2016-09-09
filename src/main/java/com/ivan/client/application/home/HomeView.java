@@ -15,6 +15,9 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     }
 
     @UiField
+    Label workingDirLabel;
+
+    @UiField
     TextBox nameTextBox;
 
     @UiField
@@ -35,6 +38,9 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     @UiField
     RadioButton vwfRadio;
 
+    @UiField
+    RadioButton cwfRadio;
+
     @Inject
     HomeView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
@@ -44,11 +50,12 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     public void doButtonClick(ClickEvent event) {
         int action_code = 0;
 
-        if (crfRadio.getValue()) action_code = 1;
-        if (crdRadio.getValue()) action_code = 2;
-        if (dlfRadio.getValue()) action_code = 3;
-        if (dldRadio.getValue()) action_code = 4;
-        if (vwfRadio.getValue()) action_code = 5;
+        if (vwfRadio.getValue()) action_code = 1;
+        if (cwfRadio.getValue()) action_code = 2;
+        if (crfRadio.getValue()) action_code = 3;
+        if (crdRadio.getValue()) action_code = 4;
+        if (dlfRadio.getValue()) action_code = 5;
+        if (dldRadio.getValue()) action_code = 6;
 
         getUiHandlers().doButtonClick(action_code, nameTextBox.getText());
     }
