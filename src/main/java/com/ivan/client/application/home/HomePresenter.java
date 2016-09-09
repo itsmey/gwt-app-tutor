@@ -22,6 +22,7 @@ import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.ivan.shared.FileNetActions;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     }
 
     @Override
-    public void doButtonClick(int code, String parameter) {
+    public void doButtonClick(FileNetActions action, String parameter) {
         HomeServiceAsync homeServiceAsync = GWT.create(HomeService.class);
         AsyncCallback<List<String>> asyncCallback = new AsyncCallback<List<String>>() {
             @Override
@@ -65,7 +66,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
                 Window.alert(result.get(0));
             }
         };
-        homeServiceAsync.doTask(code, parameter, asyncCallback);
+        homeServiceAsync.doTask(action, parameter, asyncCallback);
     }
 
 }

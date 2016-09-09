@@ -7,8 +7,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
-import com.gwtplatform.mvp.client.ViewImpl;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
+import com.ivan.shared.FileNetActions;
 
 public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements HomePresenter.MyView {
     interface Binder extends UiBinder<Widget, HomeView> {
@@ -48,16 +48,16 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
 
     @UiHandler("doButton")
     public void doButtonClick(ClickEvent event) {
-        int action_code = 0;
+        FileNetActions action = FileNetActions.BROWSE;
 
-        if (vwfRadio.getValue()) action_code = 1;
-        if (cwfRadio.getValue()) action_code = 2;
-        if (crfRadio.getValue()) action_code = 3;
-        if (crdRadio.getValue()) action_code = 4;
-        if (dlfRadio.getValue()) action_code = 5;
-        if (dldRadio.getValue()) action_code = 6;
+        if (vwfRadio.getValue()) action = FileNetActions.BROWSE;
+        if (cwfRadio.getValue()) action = FileNetActions.SET_WORKING_DIR;
+        if (crfRadio.getValue()) action = FileNetActions.CREATE_FOLDER;
+        if (crdRadio.getValue()) action = FileNetActions.CREATE_DOCUMENT;
+        if (dlfRadio.getValue()) action = FileNetActions.DELETE_FOLDER;
+        if (dldRadio.getValue()) action = FileNetActions.DELETE_DOCUMENT;
 
-        getUiHandlers().doButtonClick(action_code, nameTextBox.getText());
+        getUiHandlers().doButtonClick(action, nameTextBox.getText());
     }
 
 

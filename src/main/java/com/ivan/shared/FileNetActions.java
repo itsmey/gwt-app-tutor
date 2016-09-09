@@ -1,4 +1,4 @@
-package com.ivan.client.application.home;
+package com.ivan.shared;
 
 public enum FileNetActions {
     GET_WORKING_DIR,
