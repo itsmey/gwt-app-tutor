@@ -9,6 +9,9 @@
         .header {
             font-size: 250%
         }
+        .table {
+            border: solid 1px;
+        }
     </ui:style>
 
     <g:VerticalPanel styleName='{style.center}'
@@ -30,7 +33,7 @@
         </g:HorizontalPanel>
         <g:Button ui:field="doButton">Do selected action</g:Button>
         <g:Label ui:field="operationStatusLabel"> </g:Label>
-        <g:FlexTable ui:field="browseGrid">
+        <g:FlexTable styleName='{style.table}' ui:field="browseGrid">
         </g:FlexTable>
     </g:VerticalPanel>
 

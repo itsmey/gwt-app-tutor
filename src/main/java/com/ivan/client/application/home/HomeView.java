@@ -77,7 +77,7 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     }
 
     public void fillGrid(List<String> strings) {
-        browseGrid.clear();
+        browseGrid.removeAllRows();
 
         for (int i = 0; i < strings.size(); i++) {
             browseGrid.setText(i, 0, strings.get(i));

@@ -22,13 +22,11 @@ public class HomeServiceImpl extends RemoteServiceServlet implements HomeService
 
         switch (action) {
             case BROWSE:
-                containees.addAll(FileNetManager.getAll());
                 break;
             case GET_WORKING_DIR:
                 break;
             case SET_WORKING_DIR:
                 FileNetManager.setWorkingDir(parameter);
-                containees.addAll(FileNetManager.getAll());
                 break;
             case CREATE_DOCUMENT:
                 FileNetManager.createDocument(parameter);
@@ -44,6 +42,7 @@ public class HomeServiceImpl extends RemoteServiceServlet implements HomeService
                 break;
         }
 
+        containees.addAll(FileNetManager.getAll());
         result.add(FileNetManager.getWorkingDir());
         result.addAll(containees);
 

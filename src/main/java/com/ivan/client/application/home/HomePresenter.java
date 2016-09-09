@@ -72,11 +72,11 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
                 String actualWorkingDir = result.remove(0);
                 getView().setWorkingDir("Working directory is " + actualWorkingDir);
 
-                switch (action) {
-                    case SET_WORKING_DIR:
-                    case BROWSE:
-                        getView().fillGrid(result);
-                }
+//                switch (action) {
+//                    case SET_WORKING_DIR:
+//                    case BROWSE:
+//                        getView().fillGrid(result);
+//                }
                 getView().fillGrid(result);
             }
         };
