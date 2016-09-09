@@ -53,7 +53,7 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     public void onReveal() {
         super.onReveal();
 
-        doButtonClick(FileNetActions.SET_WORKING_DIR, "/");
+        //doButtonClick(FileNetActions.SET_WORKING_DIR, "/");
     }
 
     @Override

@@ -69,7 +69,7 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     }
 
     public void setOperationStatus(String status) {
-        workingDirLabel.setText(status);
+        operationStatusLabel.setText(status);
     }
 
     public void setWorkingDir(String dir) {

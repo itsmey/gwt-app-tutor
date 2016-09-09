@@ -17,18 +17,20 @@ import java.util.List;
 
 class FileNetManager {
 
+    private static Connection connection;
     private static ObjectStore objectStore;
-    private static UserContext userContext;
-    private static Subject subject;
 
     private static String workingDir = "/";
+    private static String login;
+    private static String password;
 
     private static void pushSubject() {
-        userContext.pushSubject(subject);
+        Subject subject = UserContext.createSubject(connection, login, password, null);
+        UserContext.get().pushSubject(subject);
     }
 
     private static void popSubject() {
-        userContext.popSubject();
+        UserContext.get().popSubject();
     }
 
     static String getWorkingDir() {
@@ -39,18 +41,19 @@ class FileNetManager {
         workingDir = value;
     }
 
-    static void connect(String login, String password, String objectStoreName)
+    static void connect(String lgn, String pwd, String objectStoreName)
             throws Exception {
         String uri = "http://172.19.215.15:9080/wsi/FNCEWS40MTOM/";
 
-        Connection conn = Factory.Connection.getConnection(uri);
-        userContext = UserContext.get();
-        subject = UserContext.createSubject(conn, login, password, null);
+        connection = Factory.Connection.getConnection(uri);
+
+        login = lgn;
+        password = pwd;
 
         pushSubject();
 
         try {
-            Domain domain = Factory.Domain.getInstance(conn, null);
+            Domain domain = Factory.Domain.getInstance(connection, null);
 
             objectStore = Factory.ObjectStore.fetchInstance(domain,
                     objectStoreName, null);
@@ -62,10 +65,10 @@ class FileNetManager {
         }
     }
 
-    static List<String> performSql(String query) {
+    private static List<String> performSql(String query) {
         SearchScope scope = new SearchScope(objectStore);
         SearchSQL sqlQuery = new SearchSQL(query);
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
 
         pushSubject();
         try {
