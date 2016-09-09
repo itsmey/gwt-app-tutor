@@ -30,8 +30,8 @@
         </g:HorizontalPanel>
         <g:Button ui:field="doButton">Do selected action</g:Button>
         <g:Label ui:field="operationStatusLabel"> </g:Label>
-        <g:Grid ui:field="browseGrid">
-        </g:Grid>
+        <g:FlexTable ui:field="browseGrid">
+        </g:FlexTable>
     </g:VerticalPanel>
 
 </ui:UiBinder>

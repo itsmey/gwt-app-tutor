@@ -47,7 +47,7 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     RadioButton cwfRadio;
 
     @UiField
-    Grid browseGrid;
+    FlexTable browseGrid;
 
     @Inject
     HomeView(Binder uiBinder) {
