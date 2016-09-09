@@ -60,4 +60,6 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
         getUiHandlers().doButtonClick(action_code, nameTextBox.getText());
     }
 
+
+
 }

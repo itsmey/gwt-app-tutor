@@ -46,6 +46,12 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     }
 
     @Override
+    public void onReveal() {
+        super.onReveal();
+
+    }
+
+    @Override
     public void doButtonClick(int code, String parameter) {
         HomeServiceAsync homeServiceAsync = GWT.create(HomeService.class);
         AsyncCallback<List<String>> asyncCallback = new AsyncCallback<List<String>>() {
