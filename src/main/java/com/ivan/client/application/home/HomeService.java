@@ -8,5 +8,5 @@ import java.util.List;
 
 @RemoteServiceRelativePath("home")
 public interface HomeService extends RemoteService {
-    List<String> doTask(FileNetActions action, String parameter);
+    List<String> doTask(FileNetActions action, String parameter) throws Exception;
 }

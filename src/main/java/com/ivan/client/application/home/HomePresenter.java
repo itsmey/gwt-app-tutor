@@ -29,6 +29,9 @@ import java.util.List;
 public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter.MyProxy>
                            implements HomeUiHandlers {
     interface MyView extends View, HasUiHandlers<HomeUiHandlers> {
+        void setOperationStatus(String status);
+        void setWorkingDir(String dir);
+        void fillGrid(List<String> strings);
     }
 
     @ProxyStandard
@@ -50,22 +53,34 @@ public class HomePresenter extends Presenter<HomePresenter.MyView, HomePresenter
     public void onReveal() {
         super.onReveal();
 
+        doButtonClick(FileNetActions.SET_WORKING_DIR, "/");
     }
 
     @Override
-    public void doButtonClick(FileNetActions action, String parameter) {
+    public void doButtonClick(final FileNetActions action, String parameter) {
         HomeServiceAsync homeServiceAsync = GWT.create(HomeService.class);
         AsyncCallback<List<String>> asyncCallback = new AsyncCallback<List<String>>() {
             @Override
             public void onFailure(Throwable caught) {
-                Window.alert("FAILURE");
+                getView().setOperationStatus("An error occurred: " + caught.getMessage());
             }
 
             @Override
             public void onSuccess(List<String> result) {
-                Window.alert(result.get(0));
+                getView().setOperationStatus("Operation performed successfully.");
+
+                String actualWorkingDir = result.remove(0);
+                getView().setWorkingDir("Working directory is " + actualWorkingDir);
+
+                switch (action) {
+                    case SET_WORKING_DIR:
+                    case BROWSE:
+                        getView().fillGrid(result);
+                }
+                getView().fillGrid(result);
             }
         };
+        getView().setOperationStatus("Performing an operation...");
         homeServiceAsync.doTask(action, parameter, asyncCallback);
     }
 

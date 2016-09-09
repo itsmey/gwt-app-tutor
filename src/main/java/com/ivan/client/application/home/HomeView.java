@@ -10,12 +10,17 @@ import com.google.gwt.user.client.ui.*;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 import com.ivan.shared.FileNetActions;
 
+import java.util.List;
+
 public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements HomePresenter.MyView {
     interface Binder extends UiBinder<Widget, HomeView> {
     }
 
     @UiField
     Label workingDirLabel;
+
+    @UiField
+    Label operationStatusLabel;
 
     @UiField
     TextBox nameTextBox;
@@ -41,6 +46,9 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
     @UiField
     RadioButton cwfRadio;
 
+    @UiField
+    Grid browseGrid;
+
     @Inject
     HomeView(Binder uiBinder) {
         initWidget(uiBinder.createAndBindUi(this));
@@ -60,6 +68,20 @@ public class HomeView extends ViewWithUiHandlers<HomeUiHandlers> implements Home
         getUiHandlers().doButtonClick(action, nameTextBox.getText());
     }
 
+    public void setOperationStatus(String status) {
+        workingDirLabel.setText(status);
+    }
 
+    public void setWorkingDir(String dir) {
+        workingDirLabel.setText(dir);
+    }
+
+    public void fillGrid(List<String> strings) {
+        browseGrid.clear();
+
+        for (int i = 0; i < strings.size(); i++) {
+            browseGrid.setText(i, 0, strings.get(i));
+        }
+    }
 
 }
