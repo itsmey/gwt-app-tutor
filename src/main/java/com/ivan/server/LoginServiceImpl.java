@@ -21,27 +21,6 @@ public class LoginServiceImpl extends RemoteServiceServlet implements LoginServi
     }
 
     public void connectFileNet(String name, String password) throws Exception {
-
-        String uri = "http://172.19.215.15:9080/wsi/FNCEWS40MTOM/";
-
-        Connection conn = Factory.Connection.getConnection(uri);
-
-        UserContext uc = UserContext.get();
-
-        uc.pushSubject(
-                UserContext.createSubject(conn, name, password, null)
-        );
-
-        try {
-            Domain domain = Factory.Domain.getInstance(conn, null);
-
-            ObjectStore os = Factory.ObjectStore.fetchInstance(domain,
-                    "TAD", null);
-
-        } catch (EngineRuntimeException ex) {
-            throw new Exception(ex.getExceptionCode().toString());
-        } finally {
-            uc.popSubject();
-        }
+        FileNetManager.connect(name, password, "TAD");
     }
 }
